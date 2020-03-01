@@ -52,6 +52,7 @@ public class BasicNavigation {
 
 
         driver.close ();// to close browser
+        driver.quit ();
 
         driver.navigate ().refresh ();
         // to reload the page
