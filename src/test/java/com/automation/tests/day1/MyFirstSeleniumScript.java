@@ -18,7 +18,7 @@ public class MyFirstSeleniumScript {
         // create a chromDriver object
         ChromeDriver chromeDriver = new ChromeDriver ();
         // use get method to open a website
-        chromeDriver.get ("https://www.youtube.com/watch?v=PLLbGltmkpE&list=PLUDwpEzHYYLs6G9WOfFxiH5zMfgNxgmSV");
+        chromeDriver.get ("https://www.google.com");
 
 
 
