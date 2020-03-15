@@ -3,13 +3,17 @@ package com.automation.tests.day7;
 import com.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 /**
  * @author:
@@ -36,6 +40,7 @@ public class PracticeTests {
     }
     @AfterMethod (description = "Quite the wesite")
     public void tearDown(){
+        BrowserUtils.iWait(5);
         driver.quit();
     }
 
@@ -58,6 +63,31 @@ public class PracticeTests {
 
 
 
+    }
+
+    @Test
+    public void forgotPasswordTest(){
+        driver.findElement(By.linkText("Forgot Password")).click();
+        driver.findElement(By.cssSelector("#forgot_password > div > div > input[type=text]")).sendKeys("tom@gmail.com", Keys.ENTER);
+
+        String expected = "Your e-mail's been sent!";
+        String actual = driver.findElement(By.tagName("h4")).getText();
+        Assert.assertEquals(expected,actual,"message is not matching" );
+    }
+
+    @Test
+    public void checkBoxTest(){
+        driver.findElement(By.linkText("Checkboxes")).click();
+
+        List<WebElement> input = driver.findElements(By.tagName("input"));
+        WebElement firstBox = input.get(0);
+        firstBox.click();
+        BrowserUtils.iWait(3);
+
+        driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(1)")).click();
+
+
+        Assert.assertTrue(firstBox.isSelected(),"Not selected");
     }
 
 
