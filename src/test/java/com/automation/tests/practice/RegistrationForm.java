@@ -78,6 +78,8 @@ public class RegistrationForm {
         assertTrue(warningMessage.isDisplayed());
 
 
+        int[][] number = {{'a'},{'b'}};
+        int arr[] =new int[2];
     }
 
 
