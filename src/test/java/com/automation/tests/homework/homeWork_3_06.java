@@ -18,7 +18,7 @@ import java.util.List;
  * @create:
  * @date:
  */
-public class homeWork6 {
+public class homeWork_3_06 {
     private WebDriver driver;
     private By emailBy = By.id("email");
     private By fullNameBy = By.cssSelector("#login > div:nth-child(1) > div > input[type=text]");
@@ -56,16 +56,6 @@ public class homeWork6 {
         // list for target<tr>;
         List<WebElement> trList = schrankaElement.findElements(By.tagName("tr"));
         String emailVerify = "do-not-reply@practice.cybertekschool.com";
-        String text = "";
-        for (WebElement each : trList
-                ) {
-          if ( each.findElements(By.tagName("td")).get(0).getText().equals(emailVerify)){
-              text =each.findElements(By.tagName("td")).get(0).getText();
-              System.out.println();
-          }
-
-        }
-
 
         trList.get(0).click();
         String fromFile = driver.findElement(By.id("odesilatel")).getText();
