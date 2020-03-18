@@ -13,6 +13,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * @author:
  * @create:
@@ -61,7 +65,14 @@ public class CalendarEventsPageTests {
         WebElement titleElement = driver.findElement(titleBy);
         Assert.assertTrue(titleElement.getAttribute("value").isEmpty());
         // Text that upi enter into input box will be stored inside"value"
+        // time syntax = https://www.journaldev.com/17899/java-simpledateformat-java-date-format
+        String expectedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy"));
+        String actualDate = driver.findElement(startDateBy).getAttribute("value");
+        Assert.assertEquals(expectedDate,actualDate);
 
+        String expectedTime = LocalTime.now().format(DateTimeFormatter.ofPattern("h:m a"));
+        String actualTime = driver.findElement(startTimeBy).getAttribute("value");
+        Assert.assertEquals(expectedTime,actualTime);
 
     }
     @BeforeMethod
