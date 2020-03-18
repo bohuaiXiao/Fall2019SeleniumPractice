@@ -37,6 +37,14 @@ public class CalendarEventsPageTests {
     private By endTimeBy = By.cssSelector("[name*='time_selector_oro_calendar_event_form_end-uid']");
 
     @Test
+    public void test2(){
+        driver.findElement(By.xpath("//ul[@class='quick-launchpad-toolbar']/li[2]/a")).click();
+        driver.findElement(By.xpath("//div[@class='btn-group']/a[@title='Create Contact']")).click();
+    }
+
+
+
+    @Test
     public  void verifyCreateButton(){
         WebElement element = driver.findElement(creatBy);
         Assert.assertTrue(element.isDisplayed());
@@ -84,16 +92,14 @@ public class CalendarEventsPageTests {
         driver.get(URL);
         driver.findElement(By.id("prependedInput")).sendKeys(username);
         driver.findElement(By.id("prependedInput2")).sendKeys(password, Keys.ENTER);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(activitesBy)).perform();
-        driver.findElement(By.linkText("Calendar Events")).click();
-        BrowserUtils.iWait(4);
+        BrowserUtils.iWait(3);
+
 
 
     }
     @AfterMethod
     public void tearDown() {
         BrowserUtils.iWait(3);
-        driver.close();
+       // driver.close();
     }
 }
