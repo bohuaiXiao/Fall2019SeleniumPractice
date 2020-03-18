@@ -53,8 +53,8 @@ public class CalendarEventsPageTests {
      */
     @Test(description = "Default options")
     public void verifyDefaultValues(){
+
         //Click on Create Calender Event
-        BrowserUtils.iWait(3);
         driver.findElement(creatBy).click();
 
         String nameDefault = driver.findElement(name).getText().trim();
@@ -74,6 +74,8 @@ public class CalendarEventsPageTests {
         String actualTime = driver.findElement(startTimeBy).getAttribute("value");
         Assert.assertEquals(expectedTime,actualTime);
 
+
+
     }
     @BeforeMethod
     public void setup(){
@@ -82,11 +84,12 @@ public class CalendarEventsPageTests {
         driver.get(URL);
         driver.findElement(By.id("prependedInput")).sendKeys(username);
         driver.findElement(By.id("prependedInput2")).sendKeys(password, Keys.ENTER);
-        BrowserUtils.iWait(3);
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(activitesBy)).perform();
         driver.findElement(By.linkText("Calendar Events")).click();
         BrowserUtils.iWait(4);
+
+
     }
     @AfterMethod
     public void tearDown() {
