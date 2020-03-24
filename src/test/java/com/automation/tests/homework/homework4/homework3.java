@@ -1,5 +1,6 @@
 package com.automation.tests.homework.homework4;
 
+import com.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,7 @@ public class homework3 {
      */
     private WebDriver driver;
     private By option = By.xpath("//select//option[@value=\"search-alias=aps\"]");
+    List<String> allOptionStr = new ArrayList<>();
     @BeforeMethod
     public void setup(){
         WebDriverManager.chromedriver().setup();
@@ -65,5 +67,12 @@ public class homework3 {
 
 
 
+    }
+    @Test
+    public void test3(){
+        driver.get("https://www.amazon.com/gp/site-directory");
+        List<WebElement> elements = driver.findElements(By.xpath("//h2[@class=\"fsdDeptTitle\"]"));
+        List<String> elementText = BrowserUtils.getElementText(elements);
+        Assert.assertFalse(allOptionStr.containsAll(elementText));
     }
 }
