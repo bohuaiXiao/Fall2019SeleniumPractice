@@ -14,8 +14,14 @@ public class ConfigurationReaderTest {
    public void readProperties(){
       String browser = ConfigurationReader.getProperty("browser");
       String url = ConfigurationReader.getProperty("qal");
-      System.out.println( browser);
+      String password = ConfigurationReader.getProperty("password");
+      String store_manager = ConfigurationReader.getProperty("store_manager");
 
+
+      System.out.println( browser);
+      System.out.println("url = " + url);
+      System.out.println("password = " + password);
+      System.out.println("store_manager = " + store_manager);
 
    }
 
