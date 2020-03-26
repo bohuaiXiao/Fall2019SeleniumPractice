@@ -43,7 +43,9 @@ public class homework6 {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
         driver.get("https://amazon.com");
-
+        wait.until(ExpectedConditions.elementToBeClickable(submitBy));
+        driver.findElement(searchBy).sendKeys("wooden spoon");
+        driver.findElement(submitBy).click();
     }
     @AfterMethod
     public void teardown(){
@@ -54,9 +56,6 @@ public class homework6 {
     //nav-search-submit-text
     @Test
     public void test(){
-        wait.until(ExpectedConditions.elementToBeClickable(submitBy));
-        driver.findElement(searchBy).sendKeys("wooden spoon");
-        driver.findElement(submitBy).click();
 
         String randomName = "OXO 1130880 Good Grips Wooden Corner Spoon & Scraper,Brown";
         String randomPrice = "$5.99";
@@ -83,6 +82,49 @@ public class homework6 {
         String name  = driver.findElement(By.xpath("(//h1)[1]")).getText();
         Assert.assertEquals(randomName,name);
         Assert.assertTrue(driver.findElement(addBy).isDisplayed());
+
+    }
+    @Test
+    public void test1(){
+        /**
+         * PRIME
+         * 1. go to https://amazon.com
+         * 2. search for "wooden spoon"
+         * 3. click search
+         * 4. remember name first result that has prime label
+         *
+         *
+         * 5. select Prime checkbox on the left
+         * // (//i[@class="a-icon a-icon-checkbox"])[1]
+         * 6. verify that name first result that has prime label is same as step 4
+         * //  (//h2)[1]
+         * 7. check the last checkbox under Brand on the left
+         * 8. verify that name first result that has prime label is different
+         */
+
+        BrowserUtils.iWait(2);
+        String expectName = "Wooden Spoons, 6 Pieces 9 Inch Wood Soup Spoons " +
+                "for Eating Mixing Stirring, Long Handle Spoon with Japanese " +
+                "Style Kitchen Utensil, ADLORYEA Eco Friendly Table Spoon";
+        WebElement primeButton = driver.findElement(By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]"));
+       // wait.until(ExpectedConditions.elementToBeClickable(primeButton)).click();
+        primeButton.click();
+        BrowserUtils.iWait(2);
+        WebElement firstElement = driver.findElement(By.xpath("(//div[@class=\"a-section a-spacing-medium\"])[1]//h2"));
+        String first_Name = firstElement.getText();
+        Assert.assertEquals(expectName,first_Name);
+        System.out.println("PASS");
+        BrowserUtils.iWait(2);
+        WebElement element = driver.findElement(By.cssSelector("#p_89\\/Scanwood > span > a > div > label > i"));
+        //wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+        BrowserUtils.iWait(2);
+        //wait.until(ExpectedConditions.visibilityOfAllElements());
+        WebElement scanWood = driver.findElement(By.xpath("(//div[@class='s-expand-height s-include-content-margin s-border-bottom s-latency-cf-section'])[1]//h2"));
+        wait.until(ExpectedConditions.visibilityOf(scanWood));
+        String title = scanWood.getText();
+        boolean isFlag = first_Name.equals(title);
+        Assert.assertFalse(isFlag);
 
     }
 
