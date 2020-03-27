@@ -13,20 +13,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import java.util.*;
 
-/**
- * @author:
- * @create:
- * @date:
- * 1. go to https://amazon.com
- * 2. search for "wooden spoon"
- * 3. click search
- * 4. remember the name and the price of a random result
- * 5. click on that random result
- * 6. verify default quantity of items is 1
- * 7. verify that the name and the price is the same as the one from step 5
- * 8. verify button "Add to Cart" is visible
- */
+
 public class homework6 {
     private WebDriver driver ;
     private By searchBy = By.id("twotabsearchtextbox");
@@ -37,15 +26,14 @@ public class homework6 {
     private By nameBy = By.cssSelector("#productTitle");
     private By addBy = By.linkText("Add to Cart");
     private WebDriverWait wait ;
+    private WebElement primeButton = driver.findElement(By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]"));
     @BeforeMethod
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
         driver.get("https://amazon.com");
-        wait.until(ExpectedConditions.elementToBeClickable(submitBy));
-        driver.findElement(searchBy).sendKeys("wooden spoon");
-        driver.findElement(submitBy).click();
+
     }
     @AfterMethod
     public void teardown(){
@@ -55,7 +43,7 @@ public class homework6 {
 // twotabsearchtextbox
     //nav-search-submit-text
     @Test
-    public void test(){
+    public void test1(){
 
         String randomName = "OXO 1130880 Good Grips Wooden Corner Spoon & Scraper,Brown";
         String randomPrice = "$5.99";
@@ -84,8 +72,9 @@ public class homework6 {
         Assert.assertTrue(driver.findElement(addBy).isDisplayed());
 
     }
+
     @Test
-    public void test1(){
+    public void test2(){
         /**
          * PRIME
          * 1. go to https://amazon.com
@@ -106,7 +95,7 @@ public class homework6 {
         String expectName = "Wooden Spoons, 6 Pieces 9 Inch Wood Soup Spoons " +
                 "for Eating Mixing Stirring, Long Handle Spoon with Japanese " +
                 "Style Kitchen Utensil, ADLORYEA Eco Friendly Table Spoon";
-        WebElement primeButton = driver.findElement(By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]"));
+
        // wait.until(ExpectedConditions.elementToBeClickable(primeButton)).click();
         primeButton.click();
         BrowserUtils.iWait(2);
@@ -127,6 +116,8 @@ public class homework6 {
         Assert.assertFalse(isFlag);
 
     }
+
+
 
 
 
