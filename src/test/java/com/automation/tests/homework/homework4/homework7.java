@@ -13,8 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author:
@@ -33,7 +32,10 @@ public class homework7 {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
         driver.get("https://amazon.com");
-
+        wait.until(ExpectedConditions.elementToBeClickable(submitBy));
+        driver.findElement(searchBy).sendKeys("iphone");
+        driver.findElement(submitBy).click();
+        BrowserUtils.iWait(3);
 
     }
     @AfterMethod
@@ -42,9 +44,6 @@ public class homework7 {
     }
     @Test
     public void test3(){
-        wait.until(ExpectedConditions.elementToBeClickable(submitBy));
-        driver.findElement(searchBy).sendKeys("wooden spoon");
-        driver.findElement(submitBy).click();
         //wait.until(ExpectedConditions.visibilityOfAllElements());
         WebElement Brand = driver.findElement(By.id("brandsRefinements"));
         List<WebElement> BrandList = Brand.findElements(By.tagName("li"));
@@ -70,4 +69,53 @@ public class homework7 {
 
         Assert.assertEquals(nameList,nameNewList);
     }
+    @Test
+    public void test4(){
+
+//        3. click on Price option Under $25 on the left
+        // get the under$25 locator
+//        4. verify that all results are cheaper than $25
+        ////h2[@class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"]
+       ////div[@class="s-result-list s-search-results sg-row"]//span[@class="a-size-base-plus a-color-base a-text-normal"]
+        // list all things in a list
+        List<WebElement> AllItems = driver.findElements(By.xpath("//div[@class=\"a-section a-spacing-medium\"]"));
+        // each produck
+        System.out.println(AllItems.size());
+        String name = "";
+        String price = "";
+        int i =1;
+        Iterator<WebElement> iterator = AllItems.iterator();
+        while (iterator.hasNext()){
+            WebElement element = iterator.next();
+            WebElement a = element.findElement(By.tagName("a"));
+            name = a.getText();
+            System.out.println("a = "+i + name);
+            i++;
+        }
+
+
+
+    }
+    @Test(description = "iphone")
+    public void test5(){
+        List<WebElement> phoneList = driver.findElements(By.xpath("//div[@class=\"s-include-content-margin s-border-bottom s-latency-cf-section\"]"));
+    //     use each phone to get name and price
+        Iterator<WebElement> iterator = phoneList.iterator();
+        String name= "";
+        String price = "";
+        HashMap<String,String > listMap = new HashMap<>();
+        while   (iterator.hasNext()){
+            WebElement next = iterator.next();
+            name = next.findElement(By.tagName("h2")).getText();
+            price = next.findElement(By.xpath("//span[@class=\"a-price\"]")).getText();
+            listMap.put(name,price);
+        }
+        System.out.print(price.trim());
+//        System.out.println(phoneList.get(0).findElement(By.tagName("h2")).getText());
+//        System.out.print(phoneList.get(0).findElement(By.xpath("//div[@class=\"a-row\"]//span[@class=\"a-price\"]")).getText());
+
+        // System.out.println(phoneList.get(1).findElement(By.tagName("h2")).getText());
+       // System.out.println(listMap);
+    }
+
 }
