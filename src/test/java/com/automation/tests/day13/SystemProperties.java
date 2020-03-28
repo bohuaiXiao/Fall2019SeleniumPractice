@@ -1,4 +1,4 @@
-package day13;
+package com.automation.tests.day13;
 
 import org.testng.annotations.Test;
 

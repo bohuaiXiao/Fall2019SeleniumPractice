@@ -1,4 +1,4 @@
-package officeHours;
+package com.automation.tests.officeHours;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

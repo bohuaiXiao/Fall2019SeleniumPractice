@@ -1,4 +1,4 @@
-package day12;
+package com.automation.tests.day12;
 
 /**
  * @author:

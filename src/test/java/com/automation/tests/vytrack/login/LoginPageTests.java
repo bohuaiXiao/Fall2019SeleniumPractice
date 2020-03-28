@@ -1,6 +1,6 @@
 package com.automation.tests.vytrack.login;
 
-import com.utilities.BrowserUtils;
+import com.automation.utilities.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

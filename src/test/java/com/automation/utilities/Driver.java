@@ -1,4 +1,4 @@
-package com.utilities;
+package com.automation.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class Driver {
     private static WebDriver driver;
     // so no one can create object of Driver class
     // everyone should call static getter method instead
-    private  Driver(){
+    public   Driver(){
 
     }
     public static WebDriver getDriver(){

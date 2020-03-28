@@ -1,10 +1,5 @@
-package officeHours;
+package com.automation.tests.officeHours;
 
-import com.google.common.collect.TreeRangeMap;
-import com.google.gson.internal.LinkedHashTreeMap;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 

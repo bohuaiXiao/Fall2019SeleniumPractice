@@ -1,4 +1,4 @@
-package com.utilities;
+package com.automation.utilities;
 
 import org.openqa.selenium.WebElement;
 

@@ -1,7 +1,6 @@
-package com.automation.tests;
+package com.automation.tests.vytrack;
 
-import com.utilities.ConfigurationReader;
-import com.utilities.Driver;
+import com.automation.utilities.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
  * @create:
  * @date:
  */
-public abstract class TestBase {
+public abstract class AbstractTestBase {
     protected WebDriverWait wait;
     // will be visible in the subclass,regardless on subclass location(same package or no)
     protected WebDriver driver=Driver.getDriver();
