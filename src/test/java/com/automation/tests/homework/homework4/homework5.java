@@ -1,7 +1,7 @@
 package com.automation.tests.homework.homework4;
 
-import com.automation.utilities.BrowserUtils;
-import com.automation.utilities.ConfigurationReader;
+import com.utilities.BrowserUtils;
+import com.utilities.ConfigurationReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,6 +1,6 @@
 package com.automation.tests.day11;
 
-import com.automation.utilities.BrowserUtils;
+import com.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

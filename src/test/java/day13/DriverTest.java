@@ -1,6 +1,6 @@
 package day13;
 
-import com.automation.utilities.Driver;
+import com.utilities.Driver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

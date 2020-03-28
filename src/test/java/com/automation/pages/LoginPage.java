@@ -1,8 +1,9 @@
 package com.automation.pages;
 
 
-import com.automation.utilities.ConfigurationReader;
-import com.automation.utilities.Driver;
+import org.openqa.selenium.Keys;
+import com.utilities.ConfigurationReader;
+import com.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class LoginPage {
     @FindBy(id="prependedInput2")
     public WebElement password;
     @FindBy(linkText = "Log in")
-    public WebElement login;
+    private WebElement login;
     @FindBy(linkText = "Forgot your password?")
     public WebElement forgotPassword ;
 
@@ -42,7 +43,7 @@ public class LoginPage {
      */
     public void login(){
         username.sendKeys(ConfigurationReader.getProperty("store_manager"));
-        password.sendKeys(ConfigurationReader.getProperty("password"));
+        password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
 
 

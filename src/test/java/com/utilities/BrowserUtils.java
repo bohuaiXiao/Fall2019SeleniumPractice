@@ -1,11 +1,11 @@
-package com.automation.utilities;
+package com.utilities;
 
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrowserUtils {
+public  class BrowserUtils {
 
     public static void iWait (long seconds){
         try {
