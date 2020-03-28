@@ -1,4 +1,4 @@
-package com.automation.tests.vytrack.officeHour;
+package com.automation.tests.officeHour;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

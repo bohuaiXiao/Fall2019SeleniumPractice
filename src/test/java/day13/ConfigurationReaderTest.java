@@ -1,6 +1,6 @@
 package day13;
 
-import com.utilities.ConfigurationReader;
+import com.automation.utilities.ConfigurationReader;
 import org.testng.annotations.Test;
 
 /**

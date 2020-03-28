@@ -1,6 +1,6 @@
 package com.automation.tests.vytrack.login;
 
-import com.utilities.BrowserUtils;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**

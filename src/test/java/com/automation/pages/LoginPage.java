@@ -1,0 +1,49 @@
+package com.automation.pages;
+
+
+import com.automation.utilities.ConfigurationReader;
+import com.automation.utilities.Driver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+/**
+ * @author:
+ * @create:
+ * @date:
+ */
+public class LoginPage {
+    protected WebDriver driver = Driver.getDriver();
+    @FindBy(id="prependedInput")
+    public WebElement username;
+    @FindBy(id="prependedInput2")
+    public WebElement password;
+    @FindBy(linkText = "Log in")
+    public WebElement login;
+    @FindBy(linkText = "Forgot your password?")
+    public WebElement forgotPassword ;
+
+
+    public LoginPage(){
+        PageFactory.initElements(driver,this);
+    }
+
+    // login as spacifc user
+    public void login(String username,String password){
+        this.username.sendKeys(username);
+        this.password.sendKeys(password);
+        login.click();
+    }
+
+    /**
+     * Method to login, version 2
+     * Login as default user
+     */
+    public void login(){
+        username.sendKeys(ConfigurationReader.getProperty("store_manager"));
+        password.sendKeys(ConfigurationReader.getProperty("password"));
+    }
+
+
+}
