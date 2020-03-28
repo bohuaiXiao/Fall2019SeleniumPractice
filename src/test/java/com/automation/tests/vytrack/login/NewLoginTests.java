@@ -1,5 +1,6 @@
 package com.automation.tests.vytrack.login;
 
+import com.automation.pages.AbstractPageBase;
 import com.automation.pages.LoginPage;
 import com.automation.tests.vytrack.AbstractTestBase;
 import com.automation.utilities.*;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
  * @create:
  * @date:
  */
-public class NewLoginTests extends AbstractTestBase {
+public class NewLoginTests extends AbstractTestBase{
 
     /**
      * Login and verify that page title is a  "Dashboard"
